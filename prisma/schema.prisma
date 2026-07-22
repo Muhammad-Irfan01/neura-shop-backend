@@ -95,6 +95,7 @@ model Product {
   wishlist         Wishlist[]
   cartItems        CartItem[]
   orderItems       OrderItem[]
+  productChunks    ProductChunk[]
   specifications   Json?
   rating           Float            @default(0)
   reviewCount      Int              @default(0)
@@ -108,6 +109,18 @@ model Product {
   metaDescription  String?
   createdAt        DateTime         @default(now())
   updatedAt        DateTime         @updatedAt
+}
+
+// Product Chunk Model (for RAG)
+model ProductChunk {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  chunkType String
+  content   String
+  embedding Unsupported("vector")? // Requires pgvector
+  metadata  Json?
+  createdAt DateTime @default(now())
 }
 
 // Product Images

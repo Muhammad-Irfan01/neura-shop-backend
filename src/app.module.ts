@@ -14,9 +14,10 @@ import { NotificationsModule } from './notifications/notifications.module';
 import { AnalyticsModule } from './analytics/analytics.module';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
+import { RagModule } from './rag/rag.module';
 
 @Module({
-  imports: [AuthModule, PrismaModule, UsersModule, ProductsModule, CategoriesModule, CartModule, OrdersModule, PaymentsModule, AiModule, NotificationsModule, AnalyticsModule],
+  imports: [AuthModule, PrismaModule, UsersModule, ProductsModule, CategoriesModule, CartModule, OrdersModule, PaymentsModule, AiModule, NotificationsModule, AnalyticsModule, RagModule],
   controllers: [AppController],
   providers: [
     AppService,
